@@ -49,8 +49,6 @@ Roster::Roster()
     {
       degree = DegreeProgram::SOFTWARE;
     }
-
-    classRosterArray.push_back(new Student(studentID, firstName, lastName, emailAddress, age, x, y, z, degree));
   }
 }
 
@@ -69,16 +67,13 @@ void Roster::remove(string studentID)
     {
       delete classRosterArray[i];
       classRosterArray.erase(classRosterArray.begin() + i);
-    }
-
-    else if (classRosterArray[i]->get_studentID() != studentID && (i == classRosterArray.size() - 1))
-    {
-      cout << "Student with ID "
-           << studentID
-           << " was not found."
-           << endl;
+      return;
     }
   }
+  cout << "Student with ID "
+       << studentID
+       << " was not found."
+       << endl;
 }
 
 void Roster::printAll()
@@ -127,7 +122,6 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
     if (student->get_degreeProgram() == degreeProgram)
     {
       student->print();
-      cout << endl;
     }
   }
 }

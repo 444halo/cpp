@@ -7,9 +7,9 @@ using namespace std;
 int main()
 {
   cout << "Scripting and Programming - Applications - C867" << endl
-       << "C++ programming language" << endl
+       << "Programming language: C++" << endl
        << "Student ID: 013590629" << endl
-       << "Halo Boykin" << endl;
+       << "Name: Halo Boykin" << endl;
 
   Roster classRoster;
 
@@ -20,15 +20,21 @@ int main()
   classRoster.add("A5", "Halo", "Boykin", "hboyki7@wgu.edu", 22, 21, 28, 35, SOFTWARE);
 
   classRoster.printAll();
+  cout << endl;
   classRoster.printInvalidEmails();
-
+  cout << endl;
   classRoster.printAverageDaysInCourse("A1");
-
+  classRoster.printAverageDaysInCourse("A2");
+  classRoster.printAverageDaysInCourse("A3");
+  classRoster.printAverageDaysInCourse("A4");
+  classRoster.printAverageDaysInCourse("A5");
+  cout << endl;
   classRoster.printByDegreeProgram(SOFTWARE);
+  cout << endl;
   classRoster.remove("A3");
   classRoster.printAll();
+  cout << endl;
   classRoster.remove("A3");
-  classRoster.~Roster();
 
   return 0;
 };
