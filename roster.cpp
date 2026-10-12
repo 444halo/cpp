@@ -132,6 +132,4 @@ Roster::~Roster()
   {
     delete student;
   }
-
-  classRosterArray.clear();
 }
