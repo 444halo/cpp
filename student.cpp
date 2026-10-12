@@ -1,30 +1,112 @@
+#include "student.h"
 #include <iostream>
 using namespace std;
 
-#include "student.h"
+void Student::set_studentID(string specificStudentID)
+{
+    studentID = specificStudentID;
+}
 
-int main() {
-    Student john("A1", "John", "Smith", "John1989@gm ail.com", 20, 30, 35, 40, SECURITY);
-    Student suzan("A2", "Suzan", "Erickson", "Erickson_1990@gmailcom", 19, 50, 30, 40, NETWORK);
-    Student jack("A3", "Jack", "Napoli", "The_lawyer99yahoo.com", 19, 20, 40, 33, SOFTWARE);
-    Student erin("A4", "Erin", "Black", "Erin.black@comcast.net", 22, 50, 58, 40, SECURITY);
-    Student halo("A5", "Halo", "Boykin", "hboyki7@wgu.edu", 22, 21, 28, 35, SOFTWARE);
+void Student::set_firstName(string specificFirstName)
+{
+    firstName = specificFirstName;
+}
 
-    cout << john.get_studentID() << "   " << "First Name: " << john.get_firstName() << "    " << "Last Name: " << john.get_lastName() << "  " << "Email: " << john.get_emailAddress() << "  " << "Age: " << john.get_age() << "  " << "daysInCourse: ";
-    john.get_courseDays();
-    cout << " DegreeProgram: " << john.course() << endl;
-    cout << suzan.get_studentID() << "   " << "First Name: " << suzan.get_firstName() << "    " << "Last Name: " << suzan.get_lastName() << "  " << "Email: " << suzan.get_emailAddress() << "  " << "Age: " << suzan.get_age() << "  " << "daysInCourse: ";
-    suzan.get_courseDays();
-    cout << " DegreeProgram: " << suzan.course() << endl;
-    cout << jack.get_studentID() << "   " << "First Name: " << jack.get_firstName() << "    " << "Last Name: " << jack.get_lastName() << "  " << "Email: " << jack.get_emailAddress() << "  " << "Age: " << jack.get_age() << "  " << "daysInCourse: ";
-    jack.get_courseDays();
-    cout << " DegreeProgram: " << jack.course() << endl;
-    cout << erin.get_studentID() << "   " << "First Name: " << erin.get_firstName() << "    " << "Last Name: " << erin.get_lastName() << "  " << "Email: " << erin.get_emailAddress() << "  " << "Age: " << erin.get_age() << "  " << "daysInCourse: ";
-    erin.get_courseDays();
-    cout << " DegreeProgram: " << erin.course() << endl;
-    cout << halo.get_studentID() << "   " << "First Name: " << halo.get_firstName() << "    " << "Last Name: " << halo.get_lastName() << "  " << "Email: " << halo.get_emailAddress() << "  " << "Age: " << halo.get_age() << "  " << "daysInCourse: ";
-    halo.get_courseDays();
-    cout << " DegreeProgram: " << halo.course() << endl;
+void Student::set_lastName(string specificLastName)
+{
+    lastName = specificLastName;
+}
 
-    return 0;
-};
+void Student::set_emailAddress(string specificEmailAddress)
+{
+    emailAddress = specificEmailAddress;
+}
+
+void Student::set_age(int specificAge)
+{
+    age = specificAge;
+}
+
+void Student::set_courseDays(int x, int y, int z)
+{
+    courseDays[0] = x;
+    courseDays[1] = y;
+    courseDays[2] = z;
+}
+
+void Student::set_degreeProgram(DegreeProgram program)
+{
+    degree = program;
+}
+
+string Student::get_studentID()
+{
+    return studentID;
+}
+
+string Student::get_firstName()
+{
+    return firstName;
+}
+
+string Student::get_lastName()
+{
+    return lastName;
+}
+
+string Student::get_emailAddress()
+{
+    return emailAddress;
+}
+
+int Student::get_age()
+{
+    return age;
+}
+
+int *Student::get_courseDays()
+{
+    return courseDays;
+}
+
+DegreeProgram Student::get_degreeProgram()
+{
+    return degree;
+}
+
+Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int x, int y, int z, DegreeProgram degree)
+{
+    set_studentID(studentID);
+    set_firstName(firstName);
+    set_lastName(lastName);
+    set_emailAddress(emailAddress);
+    set_age(age);
+    set_courseDays(x, y, z);
+    set_degreeProgram(degree);
+}
+
+void Student::print()
+{
+    cout << studentID << '\t'
+         << "First Name: " << firstName << '\t'
+         << "Last Name: " << lastName << '\t'
+         << "Email: " << emailAddress << '\t'
+         << "Age: " << age << '\t'
+         << "daysInCourse: {" << courseDays[0] << ", " << courseDays[1] << ", " << courseDays[2] << "}"
+         << " Degree Program: ";
+
+    switch (degree)
+    {
+    case SECURITY:
+        cout << "SECURITY";
+        break;
+    case NETWORK:
+        cout << "NETWORK";
+        break;
+    case SOFTWARE:
+        cout << "SOFTWARE";
+        break;
+    }
+
+    cout << endl;
+}
