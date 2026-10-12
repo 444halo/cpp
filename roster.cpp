@@ -33,6 +33,7 @@ Roster::Roster()
     int y = stoi(yString);
     getline(ss, zString, ',');
     int z = stoi(zString);
+    getline(ss, degreeString);
 
     DegreeProgram degree;
 
@@ -68,14 +69,16 @@ void Roster::remove(string studentID)
     {
       delete classRosterArray[i];
       classRosterArray.erase(classRosterArray.begin() + i);
-      return;
+    }
+
+    else if (classRosterArray[i]->get_studentID() != studentID && (i == classRosterArray.size() - 1))
+    {
+      cout << "Student with ID "
+           << studentID
+           << " was not found."
+           << endl;
     }
   }
-
-  cout << "Student with ID "
-       << studentID
-       << " was not found."
-       << endl;
 }
 
 void Roster::printAll()
